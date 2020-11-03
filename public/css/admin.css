@@ -1,0 +1,188 @@
+body {
+    background-repeat: no-repeat;
+    background-position: center;
+    color:#74758b;
+  }
+  
+  div.container{
+    min-width:1000px;
+  }
+  
+  .navbar-laravel {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+  
+  .navbar-brand {
+    color: #74758b !important;
+  }
+  
+  .nav-link {
+    color: #74758b !important;
+  }
+  
+  .table-dark {
+    color: #74758b;
+  }
+  
+  .list-group-item {
+    border-color: #fff;
+    background-color: #000;
+  }
+  
+  div.container h2{
+    margin:30px 0 50px 0;
+  }
+  
+  div.search{
+    float: left;
+  }
+  
+  div.search-box input[type="text"]{
+    width: 300px;
+  }
+  
+  ul.sort{
+    list-style: none;
+    float: right;
+  }
+  
+  ul.sort li{
+    float: left;
+  }
+  
+  ul.sort li a{
+    display: inline-block;
+    background-color: #eaeaea;
+    margin-left: 20px;
+    padding: 7px 13px;
+    color: #74758b;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  
+  ul.sort li a:hover{
+    color:#cecece;
+    transition: color 0.3s ease 0s;
+  }
+  
+  .search-btn{
+    color: #74758b;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 3px;
+    width: 90px;
+    height: 30px;
+    margin-left: 10px;
+  }
+  
+  .search-btn:hover{
+    color:#cecece;
+    transition: color 0.3s ease 0s;
+  }
+  
+  .update-btn{
+    color: #74758b;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 3px;
+    width: 90px;
+    height: 30px;
+    margin: 20px 0 0 305px;
+  }
+  
+  .update-btn:hover{
+    color:#cecece;
+    transition: color 0.3s ease 0s;
+  }
+  
+  .create-btn{
+    color: #74758b;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 3px;
+    width: 90px;
+    height: 30px;
+    margin: 20px 0 0 305px;
+  }
+  
+  .create-btn:hover{
+    color:#cecece;
+    transition: color 0.3s ease 0s;
+  }
+  
+  div.login-body {
+    padding-top: 40px;
+  }
+  
+  div.login-body>h1{
+    text-align: center;
+    padding: 30px 0;
+    font-size: 1.8em;
+  }
+  
+  button.login-btn{
+    background-color:#74758b;
+    color: white;
+    width: 300px;
+    height: 50px;
+    font-size: 1.25em;
+    border-radius: 5px;
+    margin: 30px 0 10px 0;
+  }
+  
+  button.login-btn:hover{
+    background-color:#2dadff;
+    transition: background-color 0.3s ease 0s;
+  }
+  
+  div.login-btn-area{
+    padding-right: 20px;
+    text-align: center;
+    display: block;
+  }
+  
+  div.container a.navbar-brand{
+    padding-right:50px;
+  }
+  
+  div.list-header{
+    margin-bottom: 20px;
+  }
+  
+  div.container a.head-list{
+    color:#74758b;
+    padding: 0 20px;
+  }
+  
+  div.container a.head-list:after{
+    padding-left:10px;
+    content: ">";
+  }
+  
+  div.container a.head-list:hover{
+    color:#cecece;
+    text-decoration: none;
+    transition: color 0.3s ease 0s;
+  }
+  
+  .deadline-todo {
+    background-color: #a2e1ff;
+  }
+  .priority-todo {
+    background-color: #ffcbcb;
+  }
+  
+  a.mod-btn{
+    text-decoration: none;
+  }
+  
+  a.mod-btn:hover{
+    color:#b6deff;
+  }
+  
+  table.todo-list a{
+    display: inline-block;
+    float: left;
+    margin: 0 5px;
+  }
