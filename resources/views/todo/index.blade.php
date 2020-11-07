@@ -1,4 +1,4 @@
-@extends('layouts.layouts')
+@extends('layouts.layout')
 @section('title', 'todos一覧')
 
 @section('content')
@@ -54,3 +54,4 @@
             </div>
         </div>
     </div>
+    @endsection
