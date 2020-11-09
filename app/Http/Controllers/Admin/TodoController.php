@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+// namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Todo;
@@ -21,16 +21,12 @@ class TodoController extends Controller
 
     // フォームから送信されてきた_tokenを削除する
     unset($form['_token']);
-    $todo->fill($form);
     $todo->is_complete = 0;
     
     // データベースに保存する
+    $todo->fill($form)->save();
+    return redirect('todo');
 
-    $todo->save();
-    return redirect('admin/todo/');
-
-    // // todo/createにリダイレクトする
-    // return redirect('todo/create');
     }  
 
     public function index(Request $request) {
@@ -45,6 +41,43 @@ class TodoController extends Controller
         return view('todo.index', ['todos' => $todos, 'cond_title' => $cond_title]);
         }
 
+        public function edit(Request $request)
+        {
+            // Todo Modelからデータを取得する
+            $todos = Todo::find($request->id);
+            if (empty($todos)) {
+              abort(404);    
+            }
+            return view('todo.edit', ['todo_form' => $todos]);
+        }
+
+    public function update(Request $request)
+    {
+      // Validationをかける
+      $this->validate($request, Todo::$rules);
+      // Todo Modelからデータを取得する
+      $todo = Todo::find($request->get('id'));
+      // 送信されてきたフォームデータを格納する
+      $todo_form = $request->all();
+  
+      unset($todo_form['_token']);
+      unset($todo_form['remove']);
+  
+      // 該当するデータを上書きして保存する
+      $todo->fill($todo_form)->save();
+  
+      return redirect('todo');
+
+    }
+
+    public function delete(Request $request)
+  {
+      // 該当するTodo Modelを取得
+      $todos = Todo::find($request->id);
+      // 削除する
+      $todos->delete();
+      return redirect('todo/');
+  }
         
 
 }

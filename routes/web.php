@@ -27,6 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function() {
     Route::get('todo/create', 'Admin\TodoController@add');
     Route::post('todo/create', 'Admin\TodoController@create'); //追記
-    Route::get('todo', 'TodoController@index');
+    Route::get('todo', 'Admin\TodoController@index');
+    Route::get('todo/edit/{id}', 'Admin\TodoController@edit'); // 追記
+    Route::post('todo/edit', 'Admin\TodoController@update'); // 追記
+    Route::get('todo/delete/{id}', 'Admin\TodoController@delete');
 });
 

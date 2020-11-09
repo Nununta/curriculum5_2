@@ -46,6 +46,15 @@
                                 <td>{{ str_limit($todo->space, 100) }}</td>
                                 <td>{{ str_limit($todo->deadline, 100) }}</td>
                                 <td>{{ str_limit($todo->priority, 100) }}</td>
+                                <td>
+                                    <div>
+                                        <a href="{{ action('Admin\TodoController@edit', ['id' => $todo->id]) }}">編集</a>
+                                    </div>
+
+                                    <div>
+                                        <a href="{{ action('Admin\TodoController@delete', ['id' => $todo->id]) }}">削除</a>
+                                    </div>
+                                </td>
                                 </tr>
                             @endforeach
                         </tbody>
