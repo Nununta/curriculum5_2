@@ -54,6 +54,9 @@
                                     <div>
                                         <a href="{{ action('Admin\TodoController@delete', ['id' => $todo->id]) }}">削除</a>
                                     </div>
+                                    <div>
+                                        <a class="mod-btn" href="{{ action('Admin\TodoController@complete', ['id' => $todo->id]) }}">完了</a>
+                                    </div>
                                 </td>
                                 </tr>
                             @endforeach

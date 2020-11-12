@@ -36,7 +36,7 @@ class TodoController extends Controller
             $todos = Todo::where('title', $cond_title)->get();
         } else {
             // それ以外はすべて取得する
-            $todos = Todo::all();
+            $todos = Todo::where('is_complete', 0)->get();
         }
         return view('todo.index', ['todos' => $todos, 'cond_title' => $cond_title]);
         }
@@ -77,6 +77,37 @@ class TodoController extends Controller
       // 削除する
       $todos->delete();
       return redirect('todo/');
+  }
+
+  public function complete(Request $request)
+  {
+    // 該当するTodo Modelを取得
+
+    $todo = Todo::find($request->id);
+    $todo->is_complete = 1;
+    $todo->save();
+    //dd($todo->is_complete);
+
+    return redirect('todo/complete_list');
+  }
+
+  public function complete_list()
+{
+  // 完了フラグがtrueのデータのみ取得
+  $posts = Todo::where('is_complete',1)->get();
+
+  return view('todo.complete_list', ['posts' => $posts]);
+}
+
+public function incomplete(Request $request)
+  {
+    // 該当するTodo Modelを取得
+
+    $todo = Todo::find($request->id);
+    $todo->is_complete = 0;
+    $todo->save();
+
+    return redirect('todo/');
   }
         
 
