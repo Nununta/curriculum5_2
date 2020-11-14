@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Todo;
+use Carbon\Carbon;
+use DateTime;
 
 class TodoController extends Controller
 {
@@ -36,9 +38,12 @@ class TodoController extends Controller
             $todos = Todo::where('title', $cond_title)->get();
         } else {
             // それ以外はすべて取得する
-            $todos = Todo::where('is_complete', 0)->get();
+            $todos = Todo::where('is_complete', 0)
+            ->orderBy('priority','desc')
+            ->get();
         }
-        return view('todo.index', ['todos' => $todos, 'cond_title' => $cond_title]);
+        $today = Carbon::today();
+        return view('todo.index', ['todos' => $todos, 'cond_title' => $cond_title, 'today' => $today]);
         }
 
         public function edit(Request $request)
@@ -109,6 +114,34 @@ public function incomplete(Request $request)
 
     return redirect('todo/');
   }
+
+  public function sort(Request $request) {
+    $cond_title = $request->cond_title;
+    $todos = Todo::where('is_complete',0)
+    ->orderBy('priority', 'asc')
+    ->get();
+    return view('todo.index', ['todos' => $todos, 'cond_title' => $cond_title]);
+  }
+
+
+  public function dead_list(Request $request) {
+    $posts = Todo::where([
+      ['deadline', '<', date("Y-m-d")],
+    ])->get();
+    return view('todo.dead_list', ['posts' => $posts]);
+  }
+
+  public function search_dead_list(Request $request)
+  {
+    $cond_title = $request->cond_title;
+    $posts = Todo::where([
+      ['deadline', '<', date("Y-m-d")],
+      ['title', 'like' , '%' . $cond_title . '%']
+    ])->get();
+    return view('todo.dead_list', ['posts' => $posts]);
+  }
+
+  
         
 
 }

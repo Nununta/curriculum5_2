@@ -21,6 +21,11 @@
                             {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="検索">
                         </div>
+                        <ul class="sort">
+                            <li><a href="{{ action('Admin\TodoController@add') }}" role="button">新規作成</a></li>
+                            <li><a href="{{ action('Admin\TodoController@sort') }}" role="button">重要度昇順↑</a></li>
+                            <li><a href="{{ action('Admin\TodoController@index') }}" role="button">重要度降順↓</a></li>
+                        </ul>
                     </div>
                 </form>
             </div>
@@ -40,7 +45,11 @@
                         </thead>
                         <tbody>
                             @foreach($todos as $todo)
-                                <tr>
+
+                            @if (new DateTime($todo->deadline) >= $today)
+                            @else
+                            <tr class="deadline-todo" >
+                            @endif
                                 <td>{{ $todo->id }}</td>
                                 <td>{{ str_limit($todo->title, 100) }}</td>
                                 <td>{{ str_limit($todo->space, 100) }}</td>

@@ -34,4 +34,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('todo/complete', 'Admin\TodoController@complete');
     Route::get('todo/complete_list', 'Admin\TodoController@complete_list');
     Route::get('todo/incomplete', 'Admin\TodoController@incomplete');
+    Route::get('todo/sort', 'Admin\TodoController@sort');
+    Route::get('todo/dead_list', 'Admin\TodoController@dead_list');
+    Route::post('todo/dead_list', 'Admin\TodoController@search_dead_list');
 });
